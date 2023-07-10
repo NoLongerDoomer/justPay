@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/justpay
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver  jpa:    hibernate:      ddl-auto: update
+      
+      
+mysql-encrypted-key : justpay@123
+
+server:  servlet:    context-path: /justpay
