@@ -5,4 +5,6 @@ import com.justpay.app.dtos.ClientDTO;
 public interface ClientService {
 
 	ClientDTO saveClient(ClientDTO clientDTO);
+
+	ClientDTO getClientById(long id);
 }

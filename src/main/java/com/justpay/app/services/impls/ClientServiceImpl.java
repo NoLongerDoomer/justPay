@@ -32,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
 		Clients savedClient = clientsRepository.save(clients);
 
 		ClientDTO generatedKeys = null;
-		
+
 		try {
 			generatedKeys = KeyHelper.generateKeyPair();
 		} catch (NoSuchAlgorithmException e) {
@@ -43,13 +43,23 @@ public class ClientServiceImpl implements ClientService {
 		keyStorageEntity.setClients(savedClient);
 		keyStorageEntity.setPrivateKey(generatedKeys.getPrivateKey());
 		keyStorageEntity.setPublicKey(generatedKeys.getPublicKey());
-		
+
 		KeyStorageEntity savedKeys = keyStorageRepository.save(keyStorageEntity);
-		
+
 		clientDTO.setClientId(savedClient.getId());
 		clientDTO.setPrivateKey(savedKeys.getPrivateKey());
 		clientDTO.setPublicKey(savedKeys.getPublicKey());
-		
+
+		return clientDTO;
+	}
+
+	@Override
+	public ClientDTO getClientById(long id) {
+		Clients clients = clientsRepository.getById(id);
+		ClientDTO clientDTO = new ClientDTO();
+		clientDTO.setContact(clients.getContact());
+		clientDTO.setName(clients.getName());
+		clientDTO.setClientId(clients.getId());
 		return clientDTO;
 	}
 
