@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.justpay.app.dtos.ClientDTO;
-import com.justpay.app.entities.Clients;
+import com.justpay.app.entities.ClientEntity;
 import com.justpay.app.entities.KeyStorageEntity;
 import com.justpay.app.repositories.ClientsRepository;
 import com.justpay.app.repositories.KeyStorageRepository;
@@ -25,11 +25,11 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public ClientDTO saveClient(ClientDTO clientDTO) {
 
-		Clients clients = new Clients();
+		ClientEntity clients = new ClientEntity();
 		clients.setContact(clientDTO.getContact());
 		clients.setName(clientDTO.getName());
 
-		Clients savedClient = clientsRepository.save(clients);
+		ClientEntity savedClient = clientsRepository.save(clients);
 
 		ClientDTO generatedKeys = null;
 
@@ -55,7 +55,7 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public ClientDTO getClientById(long id) {
-		Clients clients = clientsRepository.getById(id);
+		ClientEntity clients = clientsRepository.getById(id);
 		ClientDTO clientDTO = new ClientDTO();
 		clientDTO.setContact(clients.getContact());
 		clientDTO.setName(clients.getName());

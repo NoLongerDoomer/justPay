@@ -22,7 +22,7 @@ public class KeyStorageEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
-	private Clients clients;
+	private ClientEntity clients;
 
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
@@ -42,11 +42,11 @@ public class KeyStorageEntity {
 		Id = id;
 	}
 
-	public Clients getClients() {
+	public ClientEntity getClients() {
 		return clients;
 	}
 
-	public void setClients(Clients clients) {
+	public void setClients(ClientEntity clients) {
 		this.clients = clients;
 	}
 

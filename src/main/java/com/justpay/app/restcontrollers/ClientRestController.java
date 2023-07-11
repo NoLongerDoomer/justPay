@@ -14,7 +14,7 @@ import com.justpay.app.services.ClientService;
 
 @RestController
 @RequestMapping("/clients")
-public class RegisterClientController {
+public class ClientRestController {
 	
 	@Autowired
 	private ClientService clientService;
